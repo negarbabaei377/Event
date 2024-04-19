@@ -6,7 +6,9 @@
     "dev": "next dev",
     "build": "next build",
     "start": "next start",
-    "lint": "next lint"
+    "prepare": "husky",
+    "lint": "eslint --fix \"app/**/*.{js,jsx,ts,tsx}\"",
+    "format": "prettier --write \"app/**/*.{js,jsx,ts,tsx}\""
   },
   "dependencies": {
     "@radix-ui/react-slot": "^1.0.2",
@@ -25,10 +27,31 @@
     "@types/node": "^20",
     "@types/react": "^18",
     "@types/react-dom": "^18",
+    "@typescript-eslint/eslint-plugin": "5.12.1",
     "eslint": "^8",
+    "eslint-config-airbnb": "18.2.1",
     "eslint-config-next": "14.2.2",
+    "eslint-config-prettier": "8.4.0",
+    "eslint-plugin-jsx-a11y": "6.5.1",
+    "eslint-plugin-prettier": "4.0.0",
+    "eslint-plugin-react": "7.27.0",
+    "eslint-plugin-react-hooks": "4.3.0",
+    "eslint-plugin-security": "1.4.0",
+    "eslint-plugin-simple-import-sort": "7.0.0",
+    "eslint-plugin-sonarjs": "0.12.0",
+    "husky": "^9.0.11",
     "postcss": "^8",
+    "prettier": "^3.2.5",
     "tailwindcss": "^3.4.1",
     "typescript": "^5"
+  },
+  "husky": {
+    "hooks": {
+      "pre-commit": "lint-staged"
+    }
+  },
+  "lint-staged": {
+    "app/**/*.{js,jsx,ts,tsx}": "eslint --fix",
+    "app/**/*.{css,scss,md,html,json}": "prettier --write"
   }
 }
